@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+    <head>
+        <title>Index</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Tarjetas</h1>
+        
+        <!--        <a th:href="@{/agregar}">Agregar Tarjeta</a>-->
+        <div th:if="${tarjetas != null and !tarjetas.empty}">
+            <table border="1">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Numero Tarjeta</th>
+                    <th>Marca Tarjeta</th>
+                    <th>Fecha de Vencimiento</th>
+                    <th>Saldo</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+                <tr th:each="tarjeta : ${tarjetas}">
+                    <td th:text="${tarjeta.nombreCardHolder}">Mostrar Nombre</td>
+                    <td th:text="${tarjeta.apellidoCardHolder}">Mostrar Apellido</td>
+                    <td th:text="${tarjeta.numeroTarjeta}">Mostrar numero tarjeta</td>
+                    <td th:text="${tarjeta.marcaTarjeta}">Mostrar marca tarjeta</td>
+                    <td th:text="${tarjeta.fechaVencimiento}">Mostrar fecha de vencimiento</td>
+                    <td th:text="${tarjeta.saldoTarjeta}">Mostrar saldo</td>
+                    <!--                    <td><a th:href="@{/editar/} + ${persona.idPersona}" th:text="Editar"/></td>
+                                        <td><a th:href="@{/eliminar(idPersona=${persona.idPersona})}" th:text="Eliminar"/></td>-->
+                </tr>
+            </table>
+        </div>
+        <div th:if="${tarjetas == null or tarjetas.empty}">
+            La lista de tarjetas está vacía
+        </div>
+
+    </body>
+</html>
